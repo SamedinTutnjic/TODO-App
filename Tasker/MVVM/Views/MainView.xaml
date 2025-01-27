@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Tasker.MVVM.Views.MainView"
              xmlns:converters="clr-namespace:Tasker.Converters"
-             Title="MainView">
+             Title="Tasker">
 
     <ContentPage.Resources>
 	    <converters:ColorConverter x:Key="ColorConverter" />
@@ -35,7 +35,8 @@
         </Grid>
         <Grid Grid.Row="2" RowDefinitions=".2*, .8*">
             <Label StyleClass="LightBlue, SubHeader" Text="PENDING TASKS" />
-            <CollectionView Grid.Row="1" ItemsSource="{Binding Tasks}">
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Tasks}"
+                            ItemsUpdatingScrollMode="KeepLastItemInView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="Transparent">
@@ -63,5 +64,9 @@
             </CollectionView>
 
         </Grid>
+        <Button Grid.Row="2"
+                Clicked="Button_Clicked"
+                Text="+" 
+                Style="{StaticResource CircularButton}"/>
     </Grid>
 </ContentPage>
